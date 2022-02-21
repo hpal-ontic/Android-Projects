@@ -2,6 +2,7 @@ package com.example.imagegallery.model.repositories;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.imagegallery.model.networking.ImageDataService;
@@ -36,7 +37,7 @@ public class ImageRepository {
 
         call.enqueue(new Callback<List<Image>>() {
             @Override
-            public void onResponse(Call<List<Image>> call, Response<List<Image>> response) {
+            public void onResponse(@NonNull Call<List<Image>> call, @NonNull Response<List<Image>> response) {
                 if(!response.isSuccessful()) {
                     Log.d("failure", "onResponse: " + response.code());
                     return;
@@ -45,7 +46,7 @@ public class ImageRepository {
             }
 
             @Override
-            public void onFailure(Call<List<Image>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<Image>> call, @NonNull Throwable t) {
                 Log.d("failure", "onFailure: Failed from call.enqueue.onFailure");
             }
         });
